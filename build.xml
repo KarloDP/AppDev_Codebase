@@ -1,3 +1,14 @@
 <project>
-  
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="bin"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="main.class" value="Codebase.CODEBASE"/>
+    <target name="compile">
+        <javac srcdir="src" destdir="bin" includeantruntime="false">
+            <classpath>
+                <pathelement path="lib/some-library.jar"/>
+            </classpath>
+        </javac>
+    </target>
 </project>
