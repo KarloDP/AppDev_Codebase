@@ -3,12 +3,13 @@
     <property name="build.dir" value="bin"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="lib.dir" value="lib"/>
-    <property name="main.class" value="Codebase.CODEBASE"/>
+    <property name="main.class" value="main.java.Codebase.Main"/>
+
     <target name="compile">
-        <javac srcdir="src" destdir="bin" includeantruntime="false">
+        <javac srcdir="src" destdir="bin" includeantruntime="false"/>
             <classpath>
                 <pathelement path="lib/some-library.jar"/>
             </classpath>
-        </javac>
     </target>
+
 </project>
