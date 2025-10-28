@@ -1,15 +1,18 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="AppDev_Codebase" default="compile" basedir=".">
+    <!-- Load properties # based on project file structure as well as main java file-->
     <property name="src.dir" value="src"/>
     <property name="build.dir" value="bin"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
-    <property name="lib.dir" value="lib"/>
-    <property name="main.class" value="main.java.Codebase.Main"/>
+    <property name="main.class" value="main.Main"/>
 
-    <target name="compile">
-        <javac srcdir="src" destdir="bin" includeantruntime="false"/>
-            <classpath>
-                <pathelement path="lib/some-library.jar"/>
-            </classpath>
+    <target name="compile"> <!-- the names are used by the ant command to know what scripts to run, in this case "ant compile" will run the scripts in this element-->
+        <javac srcdir="src" destdir="classes.dir" includeantruntime="false"/>
     </target>
 
+    <target name="clean"> <!-- deletes directories specified-->
+        <delete dir="${build.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
 </project>
