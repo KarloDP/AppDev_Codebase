@@ -1,4 +1,4 @@
-package Codebase.Scripts;
+package DelaPena_Karlo;
 
 public class lastWordLength {
     public int lengthOfLastWord(String s) {

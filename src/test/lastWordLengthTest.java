@@ -1,7 +1,6 @@
-
-import static org.junit.Assert.*;
 import org.junit.Test;
-import Codebase.Scripts.lastWordLength;
+
+import DelaPena_Karlo.lastWordLength;
 
 public class lastWordLengthTest {
     @Test
