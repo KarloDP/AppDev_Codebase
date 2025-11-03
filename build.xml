@@ -7,6 +7,7 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
     <property name="main.class" value="Main"/>
+    <property name="run.class" value="Main"/>
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
@@ -23,4 +24,11 @@
         </jar>
     </target>
 
+    <target name="run" depends="compile">
+        <java classname="${run.class}" fork="true" dir="${basedir}">
+            <classpath>
+                <pathelement path="${classes.dir}"/>
+            </classpath>
+        </java>
+    </target>
 </project>
