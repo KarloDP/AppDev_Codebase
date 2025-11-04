@@ -1,7 +1,8 @@
 package DelaPena_Karlo;
 
 public class lastWordLength {
-    public int lengthOfLastWord(String s) {
+
+    public static int lastWordLength(String s) {
         s = s.trim();
         
         int length = 0;
@@ -15,5 +16,12 @@ public class lastWordLength {
         }
         
         return length;
+    }
+
+    public static void main(String[] args) {
+        String s = "hello world";
+        int i = lastWordLength(s);
+        System.out.println(s);
+        System.out.println(i);
     }
 }
