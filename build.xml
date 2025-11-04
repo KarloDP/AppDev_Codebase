@@ -16,12 +16,12 @@
         <mkdir dir="doc"/>
     </target>
 
-    <target name="compile">
+    <target name="compile"> <!--Compile all files-->
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar" depends="compile"><!--Create JAR file from all files-->
         <mkdir dir="${jar.dir}"/>
 
         <jar destfile="${jar.dir}/app.jar" basedir="${classes.dir}">
@@ -31,7 +31,7 @@
         </jar>
     </target>
 
-    <target name="run" depends="compile">
+    <target name="run" depends="compile"><!--Run all scripts-->
         <java classname="${run.class}" fork="true" dir="${basedir}">
             <classpath>
                 <pathelement path="${classes.dir}"/>
