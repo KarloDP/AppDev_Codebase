@@ -9,6 +9,13 @@
     <property name="main.class" value="Main"/>
     <property name="run.class" value="Main"/>
 
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <mkdir dir="doc"/>
+    </target>
+
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
