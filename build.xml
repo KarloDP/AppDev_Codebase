@@ -38,4 +38,9 @@
             </classpath>
         </java>
     </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="doc"/>
+    </target>
 </project>
