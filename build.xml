@@ -9,7 +9,7 @@
     <property name="main.class" value="Main"/>
     <property name="run.class" value="Main"/>
 
-    <target name="init">
+    <target name="init"> <!--Create necessary directories-->
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${classes.dir}"/>
         <mkdir dir="${jar.dir}"/>
@@ -39,7 +39,7 @@
         </jar>
     </target>
 
-    <target name="run" depends="compile"><!--Run all scripts-->
+    <target name="run" depends="compile"><!--Run a specific class-->
         <java classname="${run.class}" fork="true" dir="${basedir}">
             <classpath>
                 <pathelement path="${classes.dir}"/>
