@@ -14,6 +14,13 @@
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
     </target>
 
+    <target name="compile-specific">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
+            <include name="path/to/YourClass.java"/>
+        </javac>
+    </target>
+
     <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
 
@@ -31,4 +38,6 @@
             </classpath>
         </java>
     </target>
+
+
 </project>
