@@ -49,6 +49,16 @@
         <echo message="Javadoc generated successfully in the 'doc' directory."/>
     </target>
 
+    <!-- =============================== -->
+    <!-- Create JAR for the Documentation -->
+    <!-- =============================== -->
+    <target name="jar-docs" depends="javadoc">
+        <mkdir dir="${jar.dir}"/>
+
+        <jar destfile="${jar.dir}/docs.jar" basedir="doc"/>
+        <echo message="Documentation JAR created successfully at ${jar.dir}/docs.jar"/>
+    </target>
+
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="doc"/>
