@@ -24,7 +24,7 @@
     <target name="compile-specific">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
-            <include name="path/to/YourClass.java"/>
+            <include name="src/Tolentino_AlvinJohn/addTwoNumbers.java"/>
         </javac>
     </target>
 
