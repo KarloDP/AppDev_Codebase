@@ -9,11 +9,19 @@
     <property name="main.class" value="Main"/>
     <property name="run.class" value="Main"/>
 
-    <target name="compile">
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <mkdir dir="doc"/>
+    </target>
+
+    <target name="compile"> <!--Compile all files-->
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
     </target>
 
+    <target name="jar" depends="compile"><!--Create JAR file from all files-->
     <target name="compile-specific">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
@@ -31,12 +39,37 @@
         </jar>
     </target>
 
-    <target name="run" depends="compile">
+    <target name="run" depends="compile"><!--Run all scripts-->
         <java classname="${run.class}" fork="true" dir="${basedir}">
             <classpath>
                 <pathelement path="${classes.dir}"/>
             </classpath>
         </java>
+    </target>
+
+    <!-- =============================== -->
+    <!-- Generate Javadoc Documentation -->
+    <!-- =============================== -->
+    <target name="javadoc" depends="init">
+        <javadoc destdir="doc" sourcepath="${src.dir}" author="true" version="true" use="true" windowtitle="AppDev Documentation">
+            <doctitle><![CDATA[<h1>AppDev_Codebase Documentation</h1>]]></doctitle>
+        </javadoc>
+        <echo message="Javadoc generated successfully in the 'doc' directory."/>
+    </target>
+
+    <!-- =============================== -->
+    <!-- Create JAR for the Documentation -->
+    <!-- =============================== -->
+    <target name="jar-docs" depends="javadoc">
+        <mkdir dir="${jar.dir}"/>
+
+        <jar destfile="${jar.dir}/docs.jar" basedir="doc"/>
+        <echo message="Documentation JAR created successfully at ${jar.dir}/docs.jar"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="doc"/>
     </target>
 
 
