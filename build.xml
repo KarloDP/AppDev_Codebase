@@ -24,9 +24,10 @@
     <target name="compile-specific">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
-            <include name="Tolentino_AlvinJohn/addTwoNumbers.java"/>
+            <include name="${file}"/>
         </javac>
     </target>
+
 
     <target name="jar" depends="compile"><!--Create JAR file from all files-->
         <mkdir dir="${jar.dir}"/>
