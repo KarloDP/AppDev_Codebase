@@ -39,6 +39,16 @@
         </java>
     </target>
 
+    <!-- =============================== -->
+    <!-- Generate Javadoc Documentation -->
+    <!-- =============================== -->
+    <target name="javadoc" depends="init">
+        <javadoc destdir="doc" sourcepath="${src.dir}" author="true" version="true" use="true" windowtitle="AppDev Documentation">
+            <doctitle><![CDATA[<h1>AppDev_Codebase Documentation</h1>]]></doctitle>
+        </javadoc>
+        <echo message="Javadoc generated successfully in the 'doc' directory."/>
+    </target>
+
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="doc"/>
