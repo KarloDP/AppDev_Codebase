@@ -2,40 +2,57 @@
 
 <project name="AppDev_Codebase" default="compile" basedir=".">
 
+    <!-- ========== Properties ========== -->
     <property name="src.dir" value="src"/>
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
+    <property name="doc.dir" value="doc"/>
     <property name="main.class" value="Main"/>
     <property name="run.class" value="Main"/>
 
+    <!-- ========== Setup Folders ========== -->
     <target name="init">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${classes.dir}"/>
         <mkdir dir="${jar.dir}"/>
-        <mkdir dir="doc"/>
+        <mkdir dir="${doc.dir}"/>
     </target>
 
-    <target name="compile"> <!--Compile all files-->
-        <mkdir dir="${classes.dir}"/>
+    <!-- ========== Compile all Java files ========== -->
+    <target name="compile" depends="init">
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+        <echo message="All Java source files compiled successfully."/>
     </target>
 
-    <target name="jar" depends="compile"><!--Create JAR file from all files-->
+    <!-- ========== Create Application JAR ========== -->
+    <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
 
         <jar destfile="${jar.dir}/app.jar" basedir="${classes.dir}">
             <manifest>
-                <attribute name="Main-class" value="${main.class}"/>
+                <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
         </jar>
+
+        <echo message="Application JAR created at ${jar.dir}/app.jar"/>
     </target>
 
-    <target name="run" depends="compile"><!--Run all scripts-->
+    <!-- ========== Generate Javadoc Documentation ========== -->
+    <target name="javadoc" depends="init">
+        <javadoc destdir="${doc.dir}" sourcepath="${src.dir}" author="true" version="true" use="true" windowtitle="AppDev Documentation">
+            <doctitle><![CDATA[<h1>AppDev_Codebase Documentation</h1>]]></doctitle>
+        </javadoc>
+        <echo message="Javadoc generated in the 'doc' directory."/>
+    </target>
+
+    <!-- ========== Run Main Program ========== -->
+    <target name="run" depends="compile">
         <java classname="${run.class}" fork="true" dir="${basedir}">
             <classpath>
                 <pathelement path="${classes.dir}"/>
             </classpath>
         </java>
     </target>
+
 </project>
